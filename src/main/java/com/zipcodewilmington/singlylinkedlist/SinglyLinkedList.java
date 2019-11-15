@@ -68,6 +68,16 @@ public class SinglyLinkedList {
         return counter;
     }
 
+    public int size(){
+        int counter = 0;
+        Node current = head;
+        while (current != null) {
+            counter++;
+            current = current.next;
+        }
+        return counter;
+    }
+
     public int get(int index) {
         int counter = 0;
         Node current = head;
@@ -79,5 +89,19 @@ public class SinglyLinkedList {
                 break;
             }
         }return counter;
+    }
+
+    public SinglyLinkedList copy(){
+        SinglyLinkedList copyList = new SinglyLinkedList();
+        Node current = head;
+        while (current != null) {
+            copyList.add(current.data);
+            current = current.next;
+        }
+        return copyList;
+    }
+
+    public void sort(){
+
     }
 }

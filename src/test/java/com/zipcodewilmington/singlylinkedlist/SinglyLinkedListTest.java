@@ -43,6 +43,19 @@ public class SinglyLinkedListTest {
         Assert.assertEquals(2, myList.find(3));
 
     }
+
+    @Test
+    public void sizeTest(){
+        SinglyLinkedList myList = new SinglyLinkedList();
+        myList.add(1);
+        myList.add(2);
+        myList.add(3);
+        myList.add(4);
+        myList.add(5);
+        Assert.assertEquals(5, myList.size());
+
+    }
+
     @Test
     public void getTest(){
         SinglyLinkedList myList = new SinglyLinkedList();
@@ -50,5 +63,15 @@ public class SinglyLinkedListTest {
         myList.add(2);
         myList.add(3);
         Assert.assertEquals(3, myList.get(2));
+    }
+
+    @Test
+    public void copyTest() {
+        SinglyLinkedList myList = new SinglyLinkedList();
+        myList.add(1);
+        myList.add(2);
+        myList.add(3);
+        myList.add(4);
+        Assert.assertEquals(3, myList.copy().get(2));
     }
 }
