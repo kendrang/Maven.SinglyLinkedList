@@ -24,7 +24,7 @@ public class SinglyLinkedListTest {
         myList.add(2);
         myList.add(3);
         myList.remove(2);
-        Assert.assertFalse(myList.contains(2));
+        Assert.assertFalse(myList.contains(3));
     }
 
     @Test
@@ -63,6 +63,7 @@ public class SinglyLinkedListTest {
         myList.add(2);
         myList.add(3);
         Assert.assertEquals(3, myList.get(2));
+
     }
 
     @Test
@@ -73,5 +74,16 @@ public class SinglyLinkedListTest {
         myList.add(3);
         myList.add(4);
         Assert.assertEquals(3, myList.copy().get(2));
+    }
+
+    @Test
+    public void sortTest(){
+        SinglyLinkedList myList1 = new SinglyLinkedList();
+        myList1.add(5);
+        myList1.add(2);
+        myList1.add(17);
+        myList1.add(1);
+        myList1.sort();
+        Assert.assertEquals(1, myList1.get(0));
     }
 }

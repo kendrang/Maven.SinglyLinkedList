@@ -29,29 +29,29 @@ public class SinglyLinkedList {
         }
     }
 
-    public void remove(int data) {
-        Node current = head;
-        if (head.data == data) {
+    public void remove(int index) {
+        if (index == 0) {
             head = head.next;
         }
-        while (current.next != null) {
-            if (current.next.data == data) {
-                current.next = current.next.next;
-                return;
+        else {
+            Node current = head;
+            for (int i = 0;i < index - 1 ; i++){
+                current = current.next;
             }
-            current = current.next;
+            current.next = current.next.next;
         }
     }
 
     public boolean contains(int data) {
         Node current = head;
-        if (current.data == data){
+        if (current.data == data) {
             return true;
         }
-        while (current.next != null ) {
+        while (current.next != null) {
             if (current.next.data == data || current.data == data) {
                 return true;
-            }current = current.next;
+            }
+            current = current.next;
         }
         return false;
     }
@@ -62,13 +62,13 @@ public class SinglyLinkedList {
         while (current != null) {
             if (current.data == data)
                 return counter;
-                counter++;
-                current = current.next;
+            counter++;
+            current = current.next;
         }
         return counter;
     }
 
-    public int size(){
+    public int size() {
         int counter = 0;
         Node current = head;
         while (current != null) {
@@ -81,17 +81,20 @@ public class SinglyLinkedList {
     public int get(int index) {
         int counter = 0;
         Node current = head;
+        if (index == 0){
+            return current.data;
+        }
         while (current.next != null) {
             current = current.next;
             counter++;
             if (counter == index) {
-                counter++;
                 break;
             }
-        }return counter;
+        }
+        return current.data;
     }
 
-    public SinglyLinkedList copy(){
+    public SinglyLinkedList copy() {
         SinglyLinkedList copyList = new SinglyLinkedList();
         Node current = head;
         while (current != null) {
@@ -101,7 +104,23 @@ public class SinglyLinkedList {
         return copyList;
     }
 
-    public void sort(){
+    public void sort() {
+        SinglyLinkedList sorted = new SinglyLinkedList();
 
+        int sizeForLoop = this.size();
+
+        for (int i = 0; i < sizeForLoop; i++){
+
+            int smallest = head.data;
+            Node current = head;
+
+            while (current != null) {
+                if (current.data < smallest) {
+                    smallest = current.data;
+                }current = current.next;
+            }
+            sorted.add(smallest);
+            this.remove(this.find(smallest));
+        } this.head = sorted.head;
     }
 }
