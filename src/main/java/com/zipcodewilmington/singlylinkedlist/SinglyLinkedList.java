@@ -45,13 +45,39 @@ public class SinglyLinkedList {
 
     public boolean contains(int data) {
         Node current = head;
-        while (current.next != null) {
-            current = current.next;
-            if (current.next.data == data) {
+        if (current.data == data){
+            return true;
+        }
+        while (current.next != null ) {
+            if (current.next.data == data || current.data == data) {
                 return true;
-            }
-        }return false;
+            }current = current.next;
+        }
+        return false;
     }
 
+    public int find(int data) {
+        int counter = 0;
+        Node current = head;
+        while (current != null) {
+            if (current.data == data)
+                return counter;
+                counter++;
+                current = current.next;
+        }
+        return counter;
+    }
 
+    public int get(int index) {
+        int counter = 0;
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+            counter++;
+            if (counter == index) {
+                counter++;
+                break;
+            }
+        }return counter;
+    }
 }
